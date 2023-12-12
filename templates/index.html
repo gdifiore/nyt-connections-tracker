@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connections Puzzle Parser</title>
+</head>
+<body>
+    <h1>Connections Puzzle Parser</h1>
+    <form method="post" action="/">
+        <textarea name="puzzle_text" rows="10" cols="50" placeholder="Enter puzzle text here">{{ request.form['puzzle_text'] }}</textarea><br>
+        <input type="submit" value="Parse Puzzle">
+    </form>
+    {% if puzzle_number is defined %}
+        <h2>Puzzle #{{ puzzle_number }} Results:</h2>
+        {% for category, is_correct in results.items() %}
+            <p>{{ category }}: {% if is_correct %}Correct{% else %}Incorrect{% endif %}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
