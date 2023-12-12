@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.input-area {
+    margin-top: 5vh;
+    margin-bottom: 20px;
+}
+
+.result-area {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    height: auto;
+    min-height: 800px;
+    resize: none;
+}
+
+.btn-primary {
+    width: 100%;
+}

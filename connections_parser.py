@@ -16,7 +16,7 @@ def validate_input(user_input):
 
     # verify emojis, row length, and total number of rows
     valid_emojis = {'🟩', '🟨', '🟪', '🟦'}
-    if len(emojis) >= 7:
+    if len(emojis) > 7:
         print("More than 7 rows of emojis")
         return False
 
