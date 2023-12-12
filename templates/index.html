@@ -28,10 +28,26 @@
                 <!-- New content below the centered content -->
                 <div class="result-area">
                     {% if puzzle_number is defined %}
-                        <h2>Puzzle #{{ puzzle_number }} Results:</h2>
-                        {% for category, is_correct in results.items() %}
-                            <p>{{ category }}: {% if is_correct %}Correct{% else %}Incorrect{% endif %}</p>
-                        {% endfor %}
+                    <h2>Puzzle #{{ puzzle_number }} Results:</h2>
+                    <script>
+                        var totalPuzzles = parseInt(localStorage.getItem("totalPuzzles")) || 0;
+                        totalPuzzles++;
+                        localStorage.setItem("totalPuzzles", totalPuzzles);
+                    </script>
+                    {% for category, is_correct in results.items() %}
+                        <p>{{ category }}: {% if is_correct %}Correct{% else %}Incorrect{% endif %}</p>
+                        <script>
+                            // Get the current count from localStorage or set to 0 if not present
+                            var count = parseInt(localStorage.getItem("{{ category }}")) || 0;
+                            if ("{{ is_correct }}" === "True") {
+                                // Increment the correct count
+                                count++;
+                            }
+
+                            // Store the updated count in localStorage
+                            localStorage.setItem("{{ category }}", count);
+                        </script>
+                    {% endfor %}
                     {% elif error_message is defined %}
                         <h2>Error:</h2>
                         <p>{{ error_message }}</p>
