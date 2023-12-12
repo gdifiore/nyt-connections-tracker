@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 from connections_parser import parse_connections_puzzle
 
 app = Flask(__name__)
-app.config['JSON_AS_ASCII'] = False
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
