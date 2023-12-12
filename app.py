@@ -8,6 +8,8 @@ def index():
     if request.method == 'POST':
         puzzle_text = request.form['puzzle_text']
         puzzle_number, results = parse_connections_puzzle(puzzle_text)
+        if (puzzle_number is None):
+            return render_template('index.html', error_message="Invalid input. Please copy from the NYT Connections results page.")
 
         print(f"[DEBUG] Puzzle #{puzzle_number} Results:")
         for category, is_correct in results.items():

@@ -5,50 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <title>Connections Puzzle Tracker</title>
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
 
-        .my-content {
-            margin-top: 5vh;
-            margin-bottom: 20px;
-        }
-
-        .additional-content {
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-control {
-            height: auto;
-            min-height: 400px;
-        }
-
-        @media (max-width: 576px) {
-            .form-control {
-                width: 100%;
-            }
-        }
-
-        .btn-primary {
-            width: 100%;
-        }
-
-        @media (min-width: 576px) {
-            .thin-form {
-                max-width: 400px;
-                margin: auto;
-            }
-        }
-    </style>
+    <link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style.css')}}">
 </head>
 
 <body>
@@ -74,6 +32,9 @@
                         {% for category, is_correct in results.items() %}
                             <p>{{ category }}: {% if is_correct %}Correct{% else %}Incorrect{% endif %}</p>
                         {% endfor %}
+                    {% elif error_message is defined %}
+                        <h2>Error:</h2>
+                        <p>{{ error_message }}</p>
                     {% endif %}
                 </div>
             </div>
