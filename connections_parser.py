@@ -27,13 +27,19 @@ def validate_input(user_input):
 
     lines = user_input.splitlines()
 
+    if (lines[0] == ''):
+        lines = lines[1:]
+
     # check if the input has the expected structure
     if len(lines) < 6 or not lines[0].startswith('Connections') or not lines[1].startswith('Puzzle #'):
-        print("Invalid input format")
+        #print("Invalid start format")
         return False
 
     # cxtract the puzzle number
-    puzzle_number = int(lines[1].split('#')[1])
+    if lines[1].split('#')[1].isdigit() == False:
+        #print("Invalid puzzle number")
+        return False
+
 
     # extract the emojis
     emojis = [list(line) for line in lines[2:]]
@@ -41,17 +47,18 @@ def validate_input(user_input):
     # verify emojis, row length, and total number of rows
     valid_emojis = {'🟩', '🟨', '🟪', '🟦'}
     if len(emojis) > 7:
-        print("More than 7 rows of emojis")
+        #print("More than 7 rows of emojis")
         return False
 
     for row in emojis:
         if len(row) > 4:
-            print("Row contains more than 4 emojis:", ''.join(row))
+            #print("Row contains more than 4 emojis:", ''.join(row))
             return False
         for emoji in row:
             if emoji not in valid_emojis:
-                print("Invalid emoji:", emoji)
+                #print("Invalid emoji:", emoji)
                 return False
+    return True
 
 def parse_connections_puzzle(puzzle_text):
     """
