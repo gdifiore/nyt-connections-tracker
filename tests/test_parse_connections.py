@@ -1,5 +1,5 @@
 import unittest, textwrap
-from connections_parser import validate_input
+from connections_parser import parse_connections_puzzle
 
 class TestValidateInput(unittest.TestCase):
 
@@ -12,8 +12,10 @@ class TestValidateInput(unittest.TestCase):
         🟦🟦🟦🟦
         🟪🟪🟪🟪
         """
-        self.assertTrue(validate_input(valid_input))
 
+        puzzle_number, results = parse_connections_puzzle(valid_input)
+        self.assertEqual(puzzle_number, 184)
+        self.assertEqual(results, {'Yellow': True, 'Green': True, 'Blue': True, 'Purple': True})
 
     def test_invalid_structure(self):
         invalid_start = """
@@ -23,8 +25,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        self.assertFalse(validate_input(invalid_start))
-
+        puzzle_number, results = parse_connections_puzzle(invalid_start)
+        self.assertIsNone(puzzle_number)
+        self.assertIsNone(results)
 
     def test_invalid_puzzle_number(self):
         invalid_number = """
@@ -33,7 +36,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        self.assertFalse(validate_input(invalid_number))
+        puzzle_number, results = parse_connections_puzzle(invalid_number)
+        self.assertIsNone(puzzle_number)
+        self.assertIsNone(results)
 
     def test_invalid_emoji(self):
         invalid_emoji = """
@@ -44,8 +49,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        self.assertFalse(validate_input(invalid_emoji))
-
+        puzzle_number, results = parse_connections_puzzle(invalid_emoji)
+        self.assertIsNone(puzzle_number)
+        self.assertIsNone(results)
 
     def test_too_many_rows(self):
         too_many_rows_input = """
@@ -60,7 +66,10 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         🟩🟨🟦🟪
         """
-        self.assertFalse(validate_input(too_many_rows_input))
+
+        puzzle_number, results = parse_connections_puzzle(too_many_rows_input)
+        self.assertIsNone(puzzle_number)
+        self.assertIsNone(results)
 
     def test_too_many_emojis_in_row(self):
         too_many_emojis_in_row_input = """
@@ -73,10 +82,16 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        self.assertFalse(validate_input(too_many_emojis_in_row_input))
+        puzzle_number, results = parse_connections_puzzle(too_many_emojis_in_row_input)
+        self.assertIsNone(puzzle_number)
+        self.assertIsNone(results)
 
     def test_empty_input(self):
-        self.assertFalse(validate_input(''))
+        empty_input = ""
+
+        puzzle_number, results = parse_connections_puzzle(empty_input)
+        self.assertIsNone(puzzle_number)
+        self.assertIsNone(results)
 
 if __name__ == '__main__':
     unittest.main()
