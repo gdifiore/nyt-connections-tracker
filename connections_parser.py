@@ -1,4 +1,4 @@
-import re
+import re, textwrap
 
 def validate_input(user_input):
     """
@@ -24,8 +24,12 @@ def validate_input(user_input):
     If any of these criteria are not met, corresponding error messages are printed,
     and the function returns False, indicating invalid input.
     """
+    if (user_input == ''):
+        return False
 
-    lines = user_input.splitlines()
+    dedented_user_input = textwrap.dedent(user_input)
+
+    lines = dedented_user_input.splitlines()
 
     if (lines[0] == ''):
         lines = lines[1:]
@@ -79,8 +83,10 @@ def parse_connections_puzzle(puzzle_text):
     if (validate_input(puzzle_text) == False):
         return None, None # invalid input
 
+    dedented_puzzle_text = textwrap.dedent(puzzle_text)
+
     # there was an error with the form input containing \r\n separators instead of \n
-    lines = puzzle_text.strip().splitlines()
+    lines = dedented_puzzle_text.strip().splitlines()
 
     # use regex to extract the puzzle number
     puzzle_number_match = re.search(r"Puzzle #(\d+)", lines[1])
