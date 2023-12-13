@@ -24,14 +24,14 @@ def validate_input(user_input):
     If any of these criteria are not met, corresponding error messages are printed,
     and the function returns False, indicating invalid input.
     """
-    if (user_input == ''):
+    if user_input == '':
         return False
 
     dedented_user_input = textwrap.dedent(user_input)
 
     lines = dedented_user_input.splitlines()
 
-    if (lines[0] == ''):
+    if lines[0] == '':
         lines = lines[1:]
 
     # check if the input has the expected structure
@@ -39,8 +39,8 @@ def validate_input(user_input):
         #print("Invalid start format")
         return False
 
-    # cxtract the puzzle number
-    if lines[1].split('#')[1].isdigit() == False:
+    # extract the puzzle number
+    if not lines[1].split('#')[1].isdigit():
         #print("Invalid puzzle number")
         return False
 
@@ -80,7 +80,7 @@ def parse_connections_puzzle(puzzle_text):
                    - Categories include 'Yellow' (Easiest), 'Green', 'Blue', and 'Purple' (Hardest).
                    - Each category is associated with a boolean indicating correctness.
     """
-    if (validate_input(puzzle_text) == False):
+    if validate_input(puzzle_text) == False:
         return None, None # invalid input
 
     dedented_puzzle_text = textwrap.dedent(puzzle_text)

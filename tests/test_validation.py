@@ -1,4 +1,4 @@
-import unittest, textwrap
+import unittest
 from connections_parser import validate_input
 
 class TestValidateInput(unittest.TestCase):

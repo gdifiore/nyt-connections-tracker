@@ -1,4 +1,4 @@
-import unittest, textwrap
+import unittest
 from connections_parser import parse_connections_puzzle
 
 class TestValidateInput(unittest.TestCase):
