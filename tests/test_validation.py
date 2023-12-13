@@ -14,6 +14,18 @@ class TestValidateInput(unittest.TestCase):
         """
         self.assertTrue(validate_input(valid_input))
 
+    def test_complex_valid_input(self):
+        complex_valid_input = """
+        Connections 
+        Puzzle #184
+        🟩🟨🟨🟨
+        🟨🟨🟪🟨
+        🟨🟨🟨🟨
+        🟦🟪🟦🟩
+        🟩🟩🟩🟩
+        🟦🟦🟪🟦
+        """
+        self.assertTrue(validate_input(complex_valid_input))
 
     def test_invalid_structure(self):
         invalid_start = """

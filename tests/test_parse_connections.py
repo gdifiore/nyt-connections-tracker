@@ -17,6 +17,22 @@ class TestValidateInput(unittest.TestCase):
         self.assertEqual(puzzle_number, 184)
         self.assertEqual(results, {'Yellow': True, 'Green': True, 'Blue': True, 'Purple': True})
 
+    def test_complex_valid_input(self):
+        complex_valid_input = """
+        Connections 
+        Puzzle #184
+        🟩🟨🟨🟨
+        🟨🟨🟪🟨
+        🟨🟨🟨🟨
+        🟦🟪🟦🟩
+        🟩🟩🟩🟩
+        🟦🟦🟪🟦
+        """
+
+        puzzle_number, results = parse_connections_puzzle(complex_valid_input)
+        self.assertEqual(puzzle_number, 184)
+        self.assertEqual(results, {'Yellow': True, 'Green': True, 'Blue': False, 'Purple': False})
+
     def test_invalid_structure(self):
         invalid_start = """
         Invalid Puzzle
