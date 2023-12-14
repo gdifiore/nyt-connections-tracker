@@ -32,5 +32,6 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
+    margin-bottom: 20px;
     z-index: 999; /* Adjust the z-index as needed to ensure the button appears above other content */
 }
