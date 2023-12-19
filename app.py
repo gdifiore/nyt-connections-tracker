@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, redirect, url_for, request, session
 from connections_parser import parse_connections_puzzle
 import os
 
@@ -26,6 +26,11 @@ def index():
 
         return render_template('index.html', puzzle_number=puzzle_number, results=results)
     return render_template('index.html')
+
+@app.route('/reset', methods=['GET'])
+def reset_session():
+    session.clear()
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
