@@ -1,56 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <title>Connections Puzzle Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Connections Puzzle Tracker</title>
 
-    <link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/style.css')}}">
     <script src="{{url_for('.static', filename='js/main.js')}}"></script>
 </head>
 
 <body>
     <!-- Button trigger modal -->
-    <button type="button" class="btn floating-button" data-bs-toggle="modal" data-bs-target="#historyModal" onclick="calculatePercentages()">
+    <button type="button" class="btn floating-button" data-bs-toggle="modal" data-bs-target="#historyModal"
+        onclick="calculatePercentages()">
         <i class="fas fa-history fa-lg"></i>
     </button>
     <!-- Modal -->
     <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="historyModalLabel">Connections History</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <h5 style="margin-bottom: 6%;">How often you get each category</h5>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="progress mb-3">
-                              <div id="yellowProgressBar" class="progress-bar" role="progressbar" style="width: 0%; background-color: #f9df6d; color: black;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="historyModalLabel">Connections History</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <h5 style="margin-bottom: 6%;">How often you get each category</h5>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="progress mb-3">
+                                    <div id="yellowProgressBar" class="progress-bar" role="progressbar"
+                                        style="width: 0%; background-color: #f9df6d; color: black;" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="progress mb-3">
-                              <div id="greenProgressBar" class="progress-bar" role="progressbar" style="width: 0%; background-color: #a0c35a; color: black;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                            <div class="col-md-12">
+                                <div class="progress mb-3">
+                                    <div id="greenProgressBar" class="progress-bar" role="progressbar"
+                                        style="width: 0%; background-color: #a0c35a; color: black;" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
                             </div>
-                          </div>
-                      <div class="col-md-12">
-                        <div class="progress mb-3">
-                          <div id="blueProgressBar" class="progress-bar" role="progressbar" style="width: 0%; background-color: #b0c4ef; color: black;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                            <div class="col-md-12">
+                                <div class="progress mb-3">
+                                    <div id="blueProgressBar" class="progress-bar" role="progressbar"
+                                        style="width: 0%; background-color: #b0c4ef; color: black;" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="progress mb-3">
+                                    <div id="purpleProgressBar" class="progress-bar" role="progressbar"
+                                        style="width: 0%; background-color: #ba81c5; color: black;" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="progress mb-3">
-                          <div id="purpleProgressBar" class="progress-bar" role="progressbar" style="width: 0%; background-color: #ba81c5; color: black;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
+
             </div>
-        </div>
         </div>
     </div>
 
@@ -63,7 +78,8 @@
                     <form method="post" action="/" class="needs-validation" novalidate>
                         <div class="mb-3 form-group">
                             <label for="puzzleText" class="form-label">Enter puzzle result text here:</label>
-                            <textarea class="form-control" name="puzzle_text" id="puzzleText" rows="9" required>{{ request.form['puzzle_text'] }}</textarea>
+                            <textarea class="form-control" name="puzzle_text" id="puzzleText" rows="9"
+                                required>{{ request.form['puzzle_text'] }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Parse Puzzle</button>
                     </form>
@@ -72,35 +88,38 @@
                 <!-- New content below the centered content -->
                 <div class="result-area">
                     {% if puzzle_number is defined %}
-                        <h2>Puzzle #{{ puzzle_number }} Results:</h2>
-                        <script>
-                            var totalPuzzles = parseInt(localStorage.getItem("totalPuzzles")) || 0;
-                            totalPuzzles++;
-                            localStorage.setItem("totalPuzzles", totalPuzzles);
-                        </script>
-                        {% for category, is_correct in results.items() %}
-                            <p>{{ category }}: {% if is_correct %}Correct{% else %}Incorrect{% endif %}</p>
-                            <script>
-                                // Get the current count from localStorage or set to 0 if not present
-                                var count = parseInt(localStorage.getItem("{{ category }}")) || 0;
-                                if ("{{ is_correct }}" === "True") {
-                                    // Increment the correct count
-                                    count++;
-                                }
+                    <h2>Puzzle #{{ puzzle_number }} Results:</h2>
+                    <script>
+                        var totalPuzzles = parseInt(localStorage.getItem("totalPuzzles")) || 0;
+                        totalPuzzles++;
+                        localStorage.setItem("totalPuzzles", totalPuzzles);
+                    </script>
+                    {% for category, is_correct in results.items() %}
+                    <p>{{ category }}: {% if is_correct %}Correct{% else %}Incorrect{% endif %}</p>
+                    <script>
+                        // Get the current count from localStorage or set to 0 if not present
+                        var count = parseInt(localStorage.getItem("{{ category }}")) || 0;
+                        if ("{{ is_correct }}" === "True") {
+                            // Increment the correct count
+                            count++;
+                        }
 
-                                // Store the updated count in localStorage
-                                localStorage.setItem("{{ category }}", count);
-                            </script>
-                        {% endfor %}
+                        // Store the updated count in localStorage
+                        localStorage.setItem("{{ category }}", count);
+                    </script>
+                    {% endfor %}
                     {% elif error_message is defined %}
-                        <h2>Error:</h2>
-                        <p>{{ error_message }}</p>
+                    <h2>Error:</h2>
+                    <p>{{ error_message }}</p>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
