@@ -15,7 +15,7 @@ def index():
 
         if puzzle_number is None:
             return render_template('index.html', error_message="Invalid input. Please copy from the NYT Connections results page.")
-        elif session['puzzle_number'] <= puzzle_number:
+        elif puzzle_number <= session['puzzle_number'] :
             return render_template('index.html', error_message="You've already entered this puzzle in the past.")
         else:
             session['puzzle_number'] = puzzle_number
