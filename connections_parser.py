@@ -1,4 +1,5 @@
-import re, textwrap
+import re
+import textwrap
 
 def validate_input(user_input):
     """
@@ -80,7 +81,7 @@ def parse_connections_puzzle(puzzle_text):
                    - Categories include 'Yellow' (Easiest), 'Green', 'Blue', and 'Purple' (Hardest).
                    - Each category is associated with a boolean indicating correctness.
     """
-    if validate_input(puzzle_text) == False:
+    if not validate_input(puzzle_text):
         return None, None # invalid input
 
     dedented_puzzle_text = textwrap.dedent(puzzle_text)
