@@ -18,10 +18,9 @@
 <body>
     <!-- Button trigger modal -->
     <button type="button" class="btn floating-button" data-bs-toggle="modal" data-bs-target="#historyModal"
-        onclick='updateLocalStorage("{{ guessed }}", "{{ guesses }}")'>
+        onclick="calculatePercentages()">
         <i class="fas fa-history fa-lg"></i>
     </button>
-
     <!-- Modal -->
     <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -63,8 +62,6 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>Average Guesses:</h5>
-                        <p id="averageGuesses"></p>
                     </div>
                 </div>
 

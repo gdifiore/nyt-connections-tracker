@@ -1,8 +1,3 @@
-function updateLocalStorage(guessed, guesses) {
-    calculatePercentages();
-    calculateAverageGuesses(guessed, guesses);
-}
-
 function calculatePercentages() {
     console.log("calculating percentages");
 
@@ -29,18 +24,4 @@ function calculatePercentages() {
 
     document.getElementById('greenProgressBar').style.width = greenPercentage + '%';
     document.getElementById('greenProgressBar').innerText = greenPercentage + '%';
-}
-
-function calculateAverageGuesses(guessed, guesses) {
-    if (guessed)
-    {
-        const avg = parseInt(localStorage.getItem('averageGuesses')) || 0;
-        const tot = parseInt(localStorage.getItem('totalPuzzles')) || 0;
-
-        const newAvg = ((avg * tot) + guesses) / (tot + 1);
-
-        localStorage.setItem('averageGuesses', newAvg);
-
-        document.getElementById('averageGuesses').innerText = newAvg.toFixed(2);
-    }
 }
