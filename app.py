@@ -27,7 +27,7 @@ def index():
         for category, is_correct in results.items():
             print(f"{category}: {'Correct' if is_correct else 'Incorrect'}")
 
-        return render_template('index.html', puzzle_number=puzzle_number, results=results)
+        return render_template('index.html', puzzle_number=puzzle_number, results=results, guessed=True, guesses=len(results))
     return render_template('index.html')
 
 @app.route('/reset', methods=['GET'])
