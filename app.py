@@ -23,6 +23,7 @@ def process_puzzle_submission(puzzle_text):
                                error_message="You've already entered this puzzle in the past.")
 
     session['puzzle_number'] = puzzle_number
+    session['total_puzzles'] += 1
 
     print(f"[DEBUG] Puzzle #{puzzle_number} Results:")
     for category, is_correct in results.items():
