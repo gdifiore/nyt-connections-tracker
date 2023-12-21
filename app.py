@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, request, session
 from connections_parser import parse_connections_puzzle
 from calculations import calculate_average_guesses
 
@@ -31,6 +31,10 @@ def process_puzzle_submission(puzzle_text):
     session['avg_guesses'] = calculate_average_guesses(session['avg_guesses'], session['total_puzzles'], guesses)
 
     return render_template('index.html', puzzle_number=puzzle_number, results=results, avg_guesses=session['avg_guesses'])
+
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
