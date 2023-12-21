@@ -82,7 +82,7 @@ def parse_connections_puzzle(puzzle_text):
                    - Each category is associated with a boolean indicating correctness.
     """
     if not validate_input(puzzle_text):
-        return None, None # invalid input
+        return None, None, None # invalid input
 
     dedented_puzzle_text = textwrap.dedent(puzzle_text)
 
