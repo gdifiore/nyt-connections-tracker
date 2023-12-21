@@ -12,7 +12,7 @@ def initialize_session():
     session.setdefault('avg_guesses', 0)
 
 def process_puzzle_submission(puzzle_text):
-    puzzle_number, results = parse_connections_puzzle(puzzle_text)
+    puzzle_number, results, guesses = parse_connections_puzzle(puzzle_text)
 
     if puzzle_number is None:
         return render_template('index.html',
@@ -28,7 +28,7 @@ def process_puzzle_submission(puzzle_text):
     for category, is_correct in results.items():
         print(f"{category}: {'Correct' if is_correct else 'Incorrect'}")
 
-    session['avg_guesses'] = calculate_average_guesses(session['avg_guesses'], session['total_puzzles'], len(results))
+    session['avg_guesses'] = calculate_average_guesses(session['avg_guesses'], session['total_puzzles'], len(guesses))
 
     return render_template('index.html', puzzle_number=puzzle_number, results=results, avg_guesses=session['avg_guesses'])
 

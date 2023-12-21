@@ -109,4 +109,4 @@ def parse_connections_puzzle(puzzle_text):
         is_category_correct = any(all(cell == emoji for cell in row) for row in grid)
         results[category] = is_category_correct
 
-    return puzzle_number, results
+    return puzzle_number, results, len(lines[2:])
