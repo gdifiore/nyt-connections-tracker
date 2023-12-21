@@ -24,6 +24,7 @@ def process_puzzle_submission(puzzle_text):
 
     session['puzzle_number'] = puzzle_number
     session['total_puzzles'] += 1
+    print(session['total_puzzles'])
 
     print(f"[DEBUG] Puzzle #{puzzle_number} Results:")
     for category, is_correct in results.items():
