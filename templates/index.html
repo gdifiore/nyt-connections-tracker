@@ -18,7 +18,7 @@
 <body>
     <!-- Button trigger modal -->
     <button type="button" class="btn floating-button" data-bs-toggle="modal" data-bs-target="#historyModal"
-        onclick='updateLocalStorage("{{ guessed }}", "{{ guesses }}")'>
+        onclick='updateLocalStorage()'>
         <i class="fas fa-history fa-lg"></i>
     </button>
 
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <h5>Average Guesses:</h5>
-                        <p id="averageGuesses"></p>
+                        <p id="averageGuesses">{{ avg_guesses }}</p>
                     </div>
                 </div>
 
