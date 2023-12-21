@@ -13,8 +13,9 @@ class TestValidateInput(unittest.TestCase):
         🟪🟪🟪🟪
         """
 
-        puzzle_number, results = parse_connections_puzzle(valid_input)
+        puzzle_number, results, guesses = parse_connections_puzzle(valid_input)
         self.assertEqual(puzzle_number, 184)
+        self.assertIsNone(guesses, 4)
         self.assertEqual(results, {'Yellow': True, 'Green': True, 'Blue': True, 'Purple': True})
 
     def test_complex_valid_input(self):
@@ -29,8 +30,9 @@ class TestValidateInput(unittest.TestCase):
         🟦🟦🟪🟦
         """
 
-        puzzle_number, results = parse_connections_puzzle(complex_valid_input)
+        puzzle_number, results, guesses = parse_connections_puzzle(complex_valid_input)
         self.assertEqual(puzzle_number, 184)
+        self.assertIsNone(guesses, 6)
         self.assertEqual(results, {'Yellow': True, 'Green': True, 'Blue': False, 'Purple': False})
 
     def test_invalid_structure(self):
@@ -41,8 +43,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        puzzle_number, results = parse_connections_puzzle(invalid_start)
+        puzzle_number, results, guesses = parse_connections_puzzle(invalid_start)
         self.assertIsNone(puzzle_number)
+        self.assertIsNone(guesses)
         self.assertIsNone(results)
 
     def test_invalid_puzzle_number(self):
@@ -52,8 +55,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        puzzle_number, results = parse_connections_puzzle(invalid_number)
+        puzzle_number, results, guesses = parse_connections_puzzle(invalid_number)
         self.assertIsNone(puzzle_number)
+        self.assertIsNone(guesses)
         self.assertIsNone(results)
 
     def test_invalid_emoji(self):
@@ -65,8 +69,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        puzzle_number, results = parse_connections_puzzle(invalid_emoji)
+        puzzle_number, results, guesses = parse_connections_puzzle(invalid_emoji)
         self.assertIsNone(puzzle_number)
+        self.assertIsNone(guesses)
         self.assertIsNone(results)
 
     def test_too_many_rows(self):
@@ -83,8 +88,9 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        puzzle_number, results = parse_connections_puzzle(too_many_rows_input)
+        puzzle_number, results, guesses = parse_connections_puzzle(too_many_rows_input)
         self.assertIsNone(puzzle_number)
+        self.assertIsNone(guesses)
         self.assertIsNone(results)
 
     def test_too_many_emojis_in_row(self):
@@ -98,15 +104,17 @@ class TestValidateInput(unittest.TestCase):
         🟩🟨🟦🟪
         """
 
-        puzzle_number, results = parse_connections_puzzle(too_many_emojis_in_row_input)
+        puzzle_number, results, guesses = parse_connections_puzzle(too_many_emojis_in_row_input)
         self.assertIsNone(puzzle_number)
+        self.assertIsNone(guesses)
         self.assertIsNone(results)
 
     def test_empty_input(self):
         empty_input = ""
 
-        puzzle_number, results = parse_connections_puzzle(empty_input)
+        puzzle_number, results, guesses = parse_connections_puzzle(empty_input)
         self.assertIsNone(puzzle_number)
+        self.assertIsNone(guesses)
         self.assertIsNone(results)
 
 if __name__ == '__main__':

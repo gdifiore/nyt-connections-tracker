@@ -73,13 +73,14 @@ def parse_connections_puzzle(puzzle_text):
         puzzle_text (str): The text representation of the Connections puzzle.
 
     Returns:
-        tuple: A tuple containing the puzzle number and results.
-               - If the input is invalid, returns (None, None).
-               - Otherwise, returns (puzzle_number, results) where:
+        tuple: A tuple containing the puzzle number, results, and number of guesses.
+               - If the input is invalid, returns (None, None, None).
+               - Otherwise, returns (puzzle_number, results, guesses) where:
                  - puzzle_number (int): The puzzle number extracted from the input.
                  - results (dict): A dictionary mapping puzzle categories to correctness.
                    - Categories include 'Yellow' (Easiest), 'Green', 'Blue', and 'Purple' (Hardest).
                    - Each category is associated with a boolean indicating correctness.
+                - guesses (int): number of guesses made by the user
     """
     if not validate_input(puzzle_text):
         return None, None, None # invalid input
