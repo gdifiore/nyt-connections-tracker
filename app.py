@@ -16,11 +16,11 @@ def process_puzzle_submission(puzzle_text):
 
     if puzzle_number is None:
         return render_template('index.html',
-                               error_message="Invalid input. Please copy from the NYT Connections results page.")
+                               error_message="Invalid input. Please copy from the NYT Connections results page.", avg_guesses=session['avg_guesses'])
 
     if puzzle_number <= session['puzzle_number']:
         return render_template('index.html',
-                               error_message="You've already entered this puzzle in the past.")
+                               error_message="You've already entered this puzzle in the past.", avg_guesses=session['avg_guesses'])
 
     session['puzzle_number'] = puzzle_number
     session['total_puzzles'] += 1
@@ -54,4 +54,4 @@ def reset_session():
     return render_template('reset.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=False, port=int(os.environ.get('PORT', 5000)))
