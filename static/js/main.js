@@ -12,10 +12,10 @@ function calculatePercentages() {
     const greenCount = parseInt(localStorage.getItem('Green')) || 0;
 
     // Calculate percentages
-    const bluePercentage = (blueCount / tot) * 100;
-    const purplePercentage = (purpleCount / tot) * 100;
-    const yellowPercentage = (yellowCount / tot) * 100;
-    const greenPercentage = (greenCount / tot) * 100;
+    const bluePercentage = ((blueCount / tot) * 100).toFixed(2);
+    const purplePercentage = ((purpleCount / tot) * 100).toFixed(2);
+    const yellowPercentage = ((yellowCount / tot) * 100).toFixed(2);
+    const greenPercentage = ((greenCount / tot) * 100).toFixed(2);
 
     document.getElementById('blueProgressBar').style.width = bluePercentage + '%';
     document.getElementById('blueProgressBar').innerText = bluePercentage + '%';
