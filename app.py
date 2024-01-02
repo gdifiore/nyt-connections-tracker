@@ -46,7 +46,7 @@ def index():
         puzzle_text = request.form['puzzle_text']
         return process_puzzle_submission(puzzle_text)
 
-    return render_template('index.html')
+    return render_template('index.html', avg_guesses=session['avg_guesses'])
 
 @app.route('/reset', methods=['GET'])
 def reset_session():
