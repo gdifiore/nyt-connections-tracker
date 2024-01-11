@@ -30,7 +30,9 @@ def process_puzzle_submission(puzzle_text):
     for category, is_correct in results.items():
         print(f"{category}: {'Correct' if is_correct else 'Incorrect'}")
 
-    session['avg_guesses'] = calculate_average_guesses(session['avg_guesses'], session['total_puzzles'], guesses)
+    # only recalculate average if all categories are correct
+    if results == {'Yellow': True, 'Green': True, 'Blue': True, 'Purple': True}:
+        session['avg_guesses'] = calculate_average_guesses(session['avg_guesses'], session['total_puzzles'], guesses)
 
     return render_template('index.html', puzzle_number=puzzle_number, results=results, avg_guesses=session['avg_guesses'])
 
