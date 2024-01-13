@@ -81,7 +81,7 @@
                     <form method="post" action="/" class="needs-validation" novalidate>
                         <div class="mb-3 form-group">
                             <label for="puzzleText" class="form-label">Enter puzzle result text here:</label>
-                            <textarea class="form-control" name="puzzle_text" id="puzzleText" rows="9"
+                            <textarea onfocus="clearContents(this);" class="form-control" name="puzzle_text" id="puzzleText" rows="9"
                                 required>{{ request.form['puzzle_text'] }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Parse Puzzle</button>

@@ -29,3 +29,7 @@ function calculatePercentages() {
     document.getElementById('greenProgressBar').style.width = greenPercentage + '%';
     document.getElementById('greenProgressBar').innerText = greenPercentage + '%';
 }
+
+function clearContents(element) {
+    element.value = '';
+  }
