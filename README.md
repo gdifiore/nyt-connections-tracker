@@ -16,3 +16,8 @@ It will tell you what categories you got right and add them to a list of all pla
 - Refactor storage
    - store everything in `session` or `localStorage`
 - clean up `requirements.txt`?
+
+### Screenshots
+<img src="Screenshot 2024-12-26 154015.png" width="50%">
+<img src="Screenshot 2024-12-26 154036.png" width="50%">
+<img src="image.png" width="50%">
