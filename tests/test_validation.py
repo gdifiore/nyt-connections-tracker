@@ -1,5 +1,12 @@
 import unittest
-from connections_parser import validate_input
+import sys
+from pathlib import Path
+
+# Add src directory to Python path
+src_path = Path(__file__).parent.parent / 'src'
+sys.path.insert(0, str(src_path))
+
+from nyt_connections_tracker.connections_parser import validate_input
 
 class TestValidateInput(unittest.TestCase):
 

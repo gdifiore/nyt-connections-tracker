@@ -1,7 +1,7 @@
-test.txt
 bugs.txt
 
 .idea/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -118,6 +118,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
 .venv
 env/
 venv/
